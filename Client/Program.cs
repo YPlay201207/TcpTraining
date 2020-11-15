@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Net.WebSockets;
+using System.Net.Http;
+using System;
 using System.Net.Sockets;
 using ClientClassNamespace;
 
@@ -10,6 +12,8 @@ namespace Client
         {
             //Connect("127.0.0.1", "String message");
             ClientClass client = new ClientClass("127.0.0.1", 13000);
+            client.Connect();
+            client.SendMessage("Hello");
         }
 
         // Functions:
