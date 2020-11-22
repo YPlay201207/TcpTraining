@@ -1,3 +1,4 @@
+using System.Threading;
 using System;
 using System.Net.Sockets;
 
@@ -8,6 +9,8 @@ namespace ClientClassNamespace{
         private int _port;
 
         private NetworkStream _stream;
+
+        private readonly Thread _listeningThread;
 
         public ClientClass(string serverAddress, int port){
             _serverAddress = serverAddress;
@@ -23,6 +26,13 @@ namespace ClientClassNamespace{
         public void SendMessage(string message){
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
             _stream.Write(data, 0, data.Length);
+        }
+
+        private void StartListening(){
+            _listeningThread = new Thread(() =>
+            {
+
+            });
         }
     }
 }
